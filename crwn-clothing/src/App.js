@@ -1,12 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import HomePage from './pages/homepage/homepage.component'
+import ShopPage from './pages/shop/shop.component'
+
 import {Switch,Route} from 'react-router-dom';
-
-
-
-const HatsPage =()=>(<h1>HatsPage</h1>)
-
 
 
 function App() {
@@ -16,7 +13,7 @@ function App() {
     <div className="App">
       <Switch>
       <Route exact  path='/' component={HomePage}/>
-      <Route path='/hatspage' component={HatsPage}/>
+      <Route path='/shop' component={ShopPage}/>
 
       </Switch>
      
