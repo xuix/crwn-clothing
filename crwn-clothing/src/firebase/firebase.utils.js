@@ -12,6 +12,46 @@ const config = {
     appId: "1:532644710705:web:b797e7a103a2eaaca90810",
     measurementId: "G-4GYXLKWX9H"
   };
+export const createUserProfileDocument = async(userAuth, additionalData)=>{
+
+if (!userAuth) return;
+
+
+//const userRef = firestore.doc('users/22222')
+console.log('########### userAuth = ',userAuth);
+
+const userRef = firestore.collection('users').doc(userAuth.uid);
+
+ console.log('########### firestore ref = ',userRef);
+ const snapShot = await userRef.get();
+
+ console.log('########### firestore snapshot  = ',snapShot);
+
+ if (!snapShot.exists){
+
+  console.log('snapshot does not exist')
+  const {displayName,email} = userAuth;
+  const createdAt = new Date();
+try {
+  await userRef.set({displayName,email,createdAt,...additionalData})
+  
+} catch (error) {console.log('Error updating database',error)}
+
+ }
+
+
+
+ else{console.log('snapshot found ')}
+
+
+
+
+return userRef
+}
+
+
+
+
 
   firebase.initializeApp(config);
   export const auth= firebase.auth();

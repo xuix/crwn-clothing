@@ -29,7 +29,7 @@ class SignIn extends Component {
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
-        <span>Sign in with you email and password</span>
+        <span>Sign in with your email and password or Google Account</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
             type="text"
