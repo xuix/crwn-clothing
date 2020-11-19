@@ -26,6 +26,17 @@ class SignUp extends Component {
       alert("passwords do not match") ;
       return;
     }
+
+    if (!email.includes('.')) {
+      alert("invalid email format") ;
+      return;
+    }
+
+    if (password.length<6) {
+      alert("password must have at least 6 characters") ;
+      return;
+    }
+
     try {
         const{user} = await auth.createUserWithEmailAndPassword(email,password);
         createUserProfileDocument(user,{displayName})
