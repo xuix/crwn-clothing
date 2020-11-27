@@ -21,3 +21,13 @@ export const selectShopCollection = (collectionUrlParam) =>
     [selectShopCollections],
     (collections) => collections?collections[collectionUrlParam]: null
   );
+
+  export const selectIsCollectionFetching= createSelector(
+    [selectShop], 
+    //*if collections is null return an emty array
+  (shop)=>shop.isFetching)
+  
+  export const selectIsCollectionLoaded= createSelector(
+    [selectShop],
+    shop=>!!shop.collections
+  );
